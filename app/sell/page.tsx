@@ -15,13 +15,11 @@ type ContactData = {
   zip: string;
 };
 
-const STEP_LABELS = ["Instant offer", "Your details", "Confirmation"];
-
 const inputClass =
   "w-full rounded-lg border border-white/10 bg-surface-elevated px-4 py-3 text-white placeholder-zinc-500 focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30";
 
 export default function SellPage() {
-  const [step, setStep] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
   const [contact, setContact] = useState<ContactData>({
     fullName: "",
     phone: "",
@@ -37,93 +35,69 @@ export default function SellPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("LCB lead submitted:", contact);
+    console.log("LCB validation request:", contact);
+    setSubmitted(true);
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div
-        className={`mx-auto px-6 pb-20 pt-28 ${step === 1 ? "max-w-4xl" : "max-w-2xl"}`}
-      >
-        <div className="mb-10 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Private offer path</p>
-          <h1 className="font-display mt-2 text-4xl text-white">Get your offer</h1>
-          <p className="mt-3 text-sm text-zinc-400">
-            Preliminary offer below · Final number after private FaceTime or in-person
-            validation
+      <div className="mx-auto max-w-4xl px-6 pb-20 pt-28">
+        {/* Intro — Car Trackers style: offer form is the page */}
+        <div className="mb-8 text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-gold">Instant cash offer</p>
+          <h1 className="font-display mt-2 text-4xl text-white md:text-5xl">
+            Get your preliminary offer
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+            Start below — same flow as leading instant-offer sites. Complete your vehicle
+            details, receive a preliminary number, then schedule private FaceTime or
+            in-person validation. Jin Falk Lexus of Beverly Hills standards.
           </p>
         </div>
 
-        {/* Progress */}
-        <div className="mb-4 flex items-center justify-center gap-2">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="flex items-center gap-2">
-              <div
-                className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold ${
-                  step >= n ? "bg-gold text-black" : "bg-surface-elevated text-zinc-500"
-                }`}
-              >
-                {n}
-              </div>
-              {n < 3 && (
-                <div className={`h-px w-10 sm:w-12 ${step > n ? "bg-gold" : "bg-white/10"}`} />
-              )}
-            </div>
-          ))}
-        </div>
-        <p className="mb-10 text-center text-xs text-zinc-500">
-          Step {step}: {STEP_LABELS[step - 1]}
-        </p>
+        {/* Step 1: AccuTrade — primary flow (always visible) */}
+        <section className="mb-16">
+          <AccuTradeWidget />
+          <p className="mt-4 text-center text-xs text-zinc-500">
+            Preliminary offer only · Final number after private validation · No obligation
+          </p>
+        </section>
 
-        {/* Step 1 — AccuTrade widget */}
-        {step === 1 && (
-          <div className="space-y-6 rounded-2xl border border-white/5 bg-surface p-6 sm:p-8">
-            <div>
-              <h2 className="font-display text-2xl text-white">Your preliminary offer</h2>
-              <p className="mt-2 text-sm text-zinc-400">
-                Complete the form below for your instant preliminary cash offer. Lexus to
-                Lamborghini — same Beverly Hills standards.
-              </p>
-            </div>
-
-            <AccuTradeWidget />
-
-            <p className="text-center text-xs text-zinc-500">
-              Preliminary offer only · Final offer after private validation · No obligation
-            </p>
-
-            <button
-              type="button"
-              onClick={() => setStep(2)}
-              className="w-full rounded-full bg-gold py-3 font-semibold text-black hover:bg-gold-light"
-            >
-              Continue — schedule validation →
-            </button>
-            <p className="text-center text-xs text-zinc-500">
-              Next: how we reach you for FaceTime or in-person confirmation
+        {/* Step 2: Contact — scroll down after offer (Car Trackers: video appraisal booking) */}
+        <section
+          id="schedule-validation"
+          className="scroll-mt-28 rounded-2xl border border-white/5 bg-surface p-6 sm:p-8"
+        >
+          <div className="mb-6 text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-gold">Next step</p>
+            <h2 className="font-display mt-2 text-3xl text-white">
+              Schedule private validation
+            </h2>
+            <p className="mt-2 text-sm text-zinc-400">
+              After reviewing your preliminary offer above, tell us how to reach you for
+              FaceTime or in-person confirmation.
             </p>
           </div>
-        )}
 
-        {/* Step 2 — Contact */}
-        {step === 2 && (
-          <form
-            className="space-y-6 rounded-2xl border border-white/5 bg-surface p-8"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setStep(3);
-            }}
-          >
-            <h2 className="font-display text-2xl text-white">How to reach you</h2>
-            <p className="text-sm text-zinc-400">
-              We&apos;ll confirm your preliminary offer privately — FaceTime or in-person, your
-              choice.
-            </p>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="sm:col-span-2">
+          {submitted ? (
+            <div className="rounded-xl bg-surface-elevated p-8 text-center">
+              <p className="font-display text-2xl text-white">Thank you.</p>
+              <p className="mt-2 text-zinc-400">
+                Your private offer path continues — we&apos;ll contact you to validate your
+                preliminary offer.
+              </p>
+              <Link
+                href="/"
+                className="mt-6 inline-block text-gold-light hover:text-gold"
+              >
+                ← Back to home
+              </Link>
+            </div>
+          ) : (
+            <form className="mx-auto max-w-xl space-y-4" onSubmit={handleSubmit}>
+              <div>
                 <label className="mb-1 block text-sm text-zinc-400">Full name</label>
                 <input
                   type="text"
@@ -133,27 +107,29 @@ export default function SellPage() {
                   onChange={(e) => handleContactChange("fullName", e.target.value)}
                 />
               </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Phone</label>
-                <input
-                  type="tel"
-                  required
-                  className={inputClass}
-                  value={contact.phone}
-                  onChange={(e) => handleContactChange("phone", e.target.value)}
-                />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm text-zinc-400">Phone</label>
+                  <input
+                    type="tel"
+                    required
+                    className={inputClass}
+                    value={contact.phone}
+                    onChange={(e) => handleContactChange("phone", e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm text-zinc-400">Email</label>
+                  <input
+                    type="email"
+                    required
+                    className={inputClass}
+                    value={contact.email}
+                    onChange={(e) => handleContactChange("email", e.target.value)}
+                  />
+                </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm text-zinc-400">Email</label>
-                <input
-                  type="email"
-                  required
-                  className={inputClass}
-                  value={contact.email}
-                  onChange={(e) => handleContactChange("email", e.target.value)}
-                />
-              </div>
-              <div className="sm:col-span-2">
                 <label className="mb-2 block text-sm text-zinc-400">Preferred validation</label>
                 <div className="flex gap-6">
                   {(["FaceTime", "In-person"] as const).map((opt) => (
@@ -161,7 +137,6 @@ export default function SellPage() {
                       <input
                         type="radio"
                         name="validation"
-                        value={opt}
                         required
                         checked={contact.validationPreference === opt}
                         onChange={() => handleContactChange("validationPreference", opt)}
@@ -172,102 +147,38 @@ export default function SellPage() {
                   ))}
                 </div>
               </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Best time to connect</label>
-                <input
-                  type="text"
-                  className={inputClass}
-                  value={contact.bestTime}
-                  onChange={(e) => handleContactChange("bestTime", e.target.value)}
-                  placeholder="Weekday mornings"
-                />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm text-zinc-400">Best time</label>
+                  <input
+                    type="text"
+                    className={inputClass}
+                    value={contact.bestTime}
+                    onChange={(e) => handleContactChange("bestTime", e.target.value)}
+                    placeholder="Weekday mornings"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm text-zinc-400">ZIP code</label>
+                  <input
+                    type="text"
+                    required
+                    className={inputClass}
+                    value={contact.zip}
+                    onChange={(e) => handleContactChange("zip", e.target.value)}
+                    placeholder="90210"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">ZIP code</label>
-                <input
-                  type="text"
-                  required
-                  className={inputClass}
-                  value={contact.zip}
-                  onChange={(e) => handleContactChange("zip", e.target.value)}
-                  placeholder="90210"
-                />
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                className="rounded-full border border-white/10 px-6 py-3 text-zinc-400 hover:text-white"
-              >
-                ← Back
-              </button>
               <button
                 type="submit"
-                className="flex-1 rounded-full bg-gold py-3 font-semibold text-black hover:bg-gold-light"
+                className="w-full rounded-full bg-gold py-3 font-semibold text-black hover:bg-gold-light"
               >
-                Continue →
+                Request validation call →
               </button>
-            </div>
-          </form>
-        )}
-
-        {/* Step 3 — Confirmation */}
-        {step === 3 && (
-          <form
-            className="space-y-6 rounded-2xl border border-white/5 bg-surface p-8"
-            onSubmit={handleSubmit}
-          >
-            <h2 className="font-display text-2xl text-white">You&apos;re all set</h2>
-
-            <div className="space-y-3 rounded-xl bg-surface-elevated p-6 text-sm text-zinc-300">
-              <p>
-                <span className="text-gold">Contact:</span> {contact.fullName}
-              </p>
-              <p>
-                <span className="text-gold">Phone:</span> {contact.phone}
-              </p>
-              <p>
-                <span className="text-gold">Email:</span> {contact.email}
-              </p>
-              <p>
-                <span className="text-gold">Validation:</span> {contact.validationPreference}
-              </p>
-              {contact.bestTime && (
-                <p>
-                  <span className="text-gold">Best time:</span> {contact.bestTime}
-                </p>
-              )}
-              <p>
-                <span className="text-gold">ZIP:</span> {contact.zip}
-              </p>
-            </div>
-
-            <div className="space-y-2 text-center text-sm text-zinc-400">
-              <p>Your private offer path begins now.</p>
-              <p className="text-xs text-zinc-500">
-                Jin Falk Lexus of Beverly Hills standards · Preliminary offer is not final until
-                private validation
-              </p>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-full bg-gold py-4 text-base font-semibold text-black hover:bg-gold-light"
-            >
-              Submit →
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setStep(2)}
-              className="w-full text-sm text-zinc-500 hover:text-zinc-300"
-            >
-              ← Back
-            </button>
-          </form>
-        )}
+            </form>
+          )}
+        </section>
 
         <p className="mt-8 text-center text-sm text-zinc-600">
           <Link href="/" className="hover:text-gold-light">

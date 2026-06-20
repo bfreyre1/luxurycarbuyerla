@@ -2,91 +2,62 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import AccuTradeWidget from "../components/AccuTradeWidget";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-type StepKey = "step1" | "step2";
-
-type FormData = {
-  step1: {
-    year: string;
-    make: string;
-    model: string;
-    mileage: string;
-    vin: string;
-    condition: string;
-    notes: string;
-    photos: File[];
-  };
-  step2: {
-    fullName: string;
-    phone: string;
-    email: string;
-    validationPreference: "FaceTime" | "In-person" | "";
-    bestTime: string;
-    zip: string;
-  };
+type ContactData = {
+  fullName: string;
+  phone: string;
+  email: string;
+  validationPreference: "FaceTime" | "In-person" | "";
+  bestTime: string;
+  zip: string;
 };
+
+const STEP_LABELS = ["Instant offer", "Your details", "Confirmation"];
 
 const inputClass =
   "w-full rounded-lg border border-white/10 bg-surface-elevated px-4 py-3 text-white placeholder-zinc-500 focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30";
 
 export default function SellPage() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
-    step1: {
-      year: "",
-      make: "",
-      model: "",
-      mileage: "",
-      vin: "",
-      condition: "",
-      notes: "",
-      photos: [],
-    },
-    step2: {
-      fullName: "",
-      phone: "",
-      email: "",
-      validationPreference: "",
-      bestTime: "",
-      zip: "",
-    },
+  const [contact, setContact] = useState<ContactData>({
+    fullName: "",
+    phone: "",
+    email: "",
+    validationPreference: "",
+    bestTime: "",
+    zip: "",
   });
 
-  const handleChange = (s: StepKey, field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [s]: { ...prev[s], [field]: value },
-    }));
-  };
-
-  const handlePhotoChange = (files: FileList | null) => {
-    if (files) {
-      setFormData((prev) => ({
-        ...prev,
-        step1: { ...prev.step1, photos: Array.from(files) },
-      }));
-    }
+  const handleContactChange = (field: keyof ContactData, value: string) => {
+    setContact((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log("LCB lead submitted:", contact);
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div className="mx-auto max-w-2xl px-6 pb-20 pt-28">
+      <div
+        className={`mx-auto px-6 pb-20 pt-28 ${step === 1 ? "max-w-4xl" : "max-w-2xl"}`}
+      >
         <div className="mb-10 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">Private offer path</p>
           <h1 className="font-display mt-2 text-4xl text-white">Get your offer</h1>
+          <p className="mt-3 text-sm text-zinc-400">
+            Preliminary offer below · Final number after private FaceTime or in-person
+            validation
+          </p>
         </div>
 
         {/* Progress */}
-        <div className="mb-10 flex items-center justify-center gap-2">
+        <div className="mb-4 flex items-center justify-center gap-2">
           {[1, 2, 3].map((n) => (
             <div key={n} className="flex items-center gap-2">
               <div
@@ -97,120 +68,46 @@ export default function SellPage() {
                 {n}
               </div>
               {n < 3 && (
-                <div
-                  className={`h-px w-12 ${step > n ? "bg-gold" : "bg-white/10"}`}
-                />
+                <div className={`h-px w-10 sm:w-12 ${step > n ? "bg-gold" : "bg-white/10"}`} />
               )}
             </div>
           ))}
         </div>
+        <p className="mb-10 text-center text-xs text-zinc-500">
+          Step {step}: {STEP_LABELS[step - 1]}
+        </p>
 
+        {/* Step 1 — AccuTrade widget */}
         {step === 1 && (
-          <form
-            className="space-y-6 rounded-2xl border border-white/5 bg-surface p-8"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setStep(2);
-            }}
-          >
-            <h2 className="font-display text-2xl text-white">Tell us about your vehicle</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Year</label>
-                <input
-                  type="number"
-                  min={1980}
-                  max={2026}
-                  className={inputClass}
-                  value={formData.step1.year}
-                  onChange={(e) => handleChange("step1", "year", e.target.value)}
-                  placeholder="2022"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Make</label>
-                <input
-                  type="text"
-                  className={inputClass}
-                  value={formData.step1.make}
-                  onChange={(e) => handleChange("step1", "make", e.target.value)}
-                  placeholder="Porsche"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Model</label>
-                <input
-                  type="text"
-                  className={inputClass}
-                  value={formData.step1.model}
-                  onChange={(e) => handleChange("step1", "model", e.target.value)}
-                  placeholder="911 Turbo S"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Mileage</label>
-                <input
-                  type="number"
-                  min={0}
-                  className={inputClass}
-                  value={formData.step1.mileage}
-                  onChange={(e) => handleChange("step1", "mileage", e.target.value)}
-                  placeholder="12000"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">VIN (optional)</label>
-                <input
-                  type="text"
-                  className={inputClass}
-                  value={formData.step1.vin}
-                  onChange={(e) => handleChange("step1", "vin", e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm text-zinc-400">Condition</label>
-                <select
-                  className={inputClass}
-                  value={formData.step1.condition}
-                  onChange={(e) => handleChange("step1", "condition", e.target.value)}
-                >
-                  <option value="">Select condition</option>
-                  <option value="Excellent">Excellent</option>
-                  <option value="Good">Good</option>
-                  <option value="Fair">Fair</option>
-                  <option value="Needs attention">Needs attention</option>
-                </select>
-              </div>
-            </div>
+          <div className="space-y-6 rounded-2xl border border-white/5 bg-surface p-6 sm:p-8">
             <div>
-              <label className="mb-1 block text-sm text-zinc-400">Notes (optional)</label>
-              <textarea
-                rows={3}
-                className={inputClass}
-                value={formData.step1.notes}
-                onChange={(e) => handleChange("step1", "notes", e.target.value)}
-              />
+              <h2 className="font-display text-2xl text-white">Your preliminary offer</h2>
+              <p className="mt-2 text-sm text-zinc-400">
+                Complete the form below for your instant preliminary cash offer. Lexus to
+                Lamborghini — same Beverly Hills standards.
+              </p>
             </div>
-            <div>
-              <label className="mb-1 block text-sm text-zinc-400">Photos (3–5 recommended)</label>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                className="text-sm text-zinc-400"
-                onChange={(e) => handlePhotoChange(e.target.files)}
-              />
-            </div>
+
+            <AccuTradeWidget />
+
+            <p className="text-center text-xs text-zinc-500">
+              Preliminary offer only · Final offer after private validation · No obligation
+            </p>
+
             <button
-              type="submit"
+              type="button"
+              onClick={() => setStep(2)}
               className="w-full rounded-full bg-gold py-3 font-semibold text-black hover:bg-gold-light"
             >
-              Continue →
+              Continue — schedule validation →
             </button>
-            <p className="text-center text-xs text-zinc-500">Next: how we reach you</p>
-          </form>
+            <p className="text-center text-xs text-zinc-500">
+              Next: how we reach you for FaceTime or in-person confirmation
+            </p>
+          </div>
         )}
 
+        {/* Step 2 — Contact */}
         {step === 2 && (
           <form
             className="space-y-6 rounded-2xl border border-white/5 bg-surface p-8"
@@ -220,32 +117,40 @@ export default function SellPage() {
             }}
           >
             <h2 className="font-display text-2xl text-white">How to reach you</h2>
+            <p className="text-sm text-zinc-400">
+              We&apos;ll confirm your preliminary offer privately — FaceTime or in-person, your
+              choice.
+            </p>
+
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label className="mb-1 block text-sm text-zinc-400">Full name</label>
                 <input
                   type="text"
+                  required
                   className={inputClass}
-                  value={formData.step2.fullName}
-                  onChange={(e) => handleChange("step2", "fullName", e.target.value)}
+                  value={contact.fullName}
+                  onChange={(e) => handleContactChange("fullName", e.target.value)}
                 />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-zinc-400">Phone</label>
                 <input
                   type="tel"
+                  required
                   className={inputClass}
-                  value={formData.step2.phone}
-                  onChange={(e) => handleChange("step2", "phone", e.target.value)}
+                  value={contact.phone}
+                  onChange={(e) => handleContactChange("phone", e.target.value)}
                 />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-zinc-400">Email</label>
                 <input
                   type="email"
+                  required
                   className={inputClass}
-                  value={formData.step2.email}
-                  onChange={(e) => handleChange("step2", "email", e.target.value)}
+                  value={contact.email}
+                  onChange={(e) => handleContactChange("email", e.target.value)}
                 />
               </div>
               <div className="sm:col-span-2">
@@ -257,8 +162,9 @@ export default function SellPage() {
                         type="radio"
                         name="validation"
                         value={opt}
-                        checked={formData.step2.validationPreference === opt}
-                        onChange={() => handleChange("step2", "validationPreference", opt)}
+                        required
+                        checked={contact.validationPreference === opt}
+                        onChange={() => handleContactChange("validationPreference", opt)}
                         className="accent-[#c9a962]"
                       />
                       {opt}
@@ -271,8 +177,8 @@ export default function SellPage() {
                 <input
                   type="text"
                   className={inputClass}
-                  value={formData.step2.bestTime}
-                  onChange={(e) => handleChange("step2", "bestTime", e.target.value)}
+                  value={contact.bestTime}
+                  onChange={(e) => handleContactChange("bestTime", e.target.value)}
                   placeholder="Weekday mornings"
                 />
               </div>
@@ -280,13 +186,15 @@ export default function SellPage() {
                 <label className="mb-1 block text-sm text-zinc-400">ZIP code</label>
                 <input
                   type="text"
+                  required
                   className={inputClass}
-                  value={formData.step2.zip}
-                  onChange={(e) => handleChange("step2", "zip", e.target.value)}
+                  value={contact.zip}
+                  onChange={(e) => handleContactChange("zip", e.target.value)}
                   placeholder="90210"
                 />
               </div>
             </div>
+
             <div className="flex gap-4">
               <button
                 type="button"
@@ -302,45 +210,55 @@ export default function SellPage() {
                 Continue →
               </button>
             </div>
-            <p className="text-center text-xs text-zinc-500">Next: review your offer path</p>
           </form>
         )}
 
+        {/* Step 3 — Confirmation */}
         {step === 3 && (
           <form
             className="space-y-6 rounded-2xl border border-white/5 bg-surface p-8"
             onSubmit={handleSubmit}
           >
-            <h2 className="font-display text-2xl text-white">Review and submit</h2>
+            <h2 className="font-display text-2xl text-white">You&apos;re all set</h2>
+
             <div className="space-y-3 rounded-xl bg-surface-elevated p-6 text-sm text-zinc-300">
               <p>
-                <span className="text-gold">Vehicle:</span> {formData.step1.year}{" "}
-                {formData.step1.make} {formData.step1.model}
+                <span className="text-gold">Contact:</span> {contact.fullName}
               </p>
               <p>
-                <span className="text-gold">Mileage:</span> {formData.step1.mileage}
+                <span className="text-gold">Phone:</span> {contact.phone}
               </p>
               <p>
-                <span className="text-gold">Condition:</span> {formData.step1.condition}
+                <span className="text-gold">Email:</span> {contact.email}
               </p>
               <p>
-                <span className="text-gold">Contact:</span> {formData.step2.fullName} ·{" "}
-                {formData.step2.phone}
+                <span className="text-gold">Validation:</span> {contact.validationPreference}
               </p>
+              {contact.bestTime && (
+                <p>
+                  <span className="text-gold">Best time:</span> {contact.bestTime}
+                </p>
+              )}
               <p>
-                <span className="text-gold">Validation:</span>{" "}
-                {formData.step2.validationPreference}
+                <span className="text-gold">ZIP:</span> {contact.zip}
               </p>
             </div>
-            <p className="text-center text-sm text-zinc-500">
-              Your private offer path begins now.
-            </p>
+
+            <div className="space-y-2 text-center text-sm text-zinc-400">
+              <p>Your private offer path begins now.</p>
+              <p className="text-xs text-zinc-500">
+                Jin Falk Lexus of Beverly Hills standards · Preliminary offer is not final until
+                private validation
+              </p>
+            </div>
+
             <button
               type="submit"
               className="w-full rounded-full bg-gold py-4 text-base font-semibold text-black hover:bg-gold-light"
             >
-              Get My Offer →
+              Submit →
             </button>
+
             <button
               type="button"
               onClick={() => setStep(2)}

@@ -7,16 +7,6 @@ import {
   ACCUTRADE_DEALER_ID,
 } from "../lib/accutrade";
 
-declare global {
-  interface Window {
-    AccuTradeObject?: {
-      dlr: string;
-      url: string;
-      target?: string;
-    };
-  }
-}
-
 function loadAccuTradeScript(): Promise<void> {
   return new Promise((resolve, reject) => {
     window.AccuTradeObject = {

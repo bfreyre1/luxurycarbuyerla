@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { BRAND } from "../lib/brand";
 import SellLanding from "./SellLanding";
 
 export const metadata: Metadata = {
-  title: "Get Your Cash Offer | Luxury Car Buyer LA",
-  description:
-    "Instant preliminary cash offer for luxury and exotic vehicles in Los Angeles. Lexus to Lamborghini. Private validation. No obligation.",
+  title: `Get Your Cash Offer | ${BRAND.siteName}`,
+  description: `Instant preliminary cash offer for luxury and exotic vehicles in Los Angeles. ${BRAND.dealerName}. Private validation. No obligation.`,
 };
 
 const TRUST = [
   "Preliminary offer in ~60 seconds",
   "Private FaceTime or in-person validation",
+  `Backed by ${BRAND.dealerShortName}`,
   "No obligation · Discreet process",
 ];
 
@@ -27,7 +28,7 @@ const STEPS = [
   {
     step: "03",
     title: "Validate & get paid",
-    body: "Our team reaches out for FaceTime or in-person confirmation.",
+    body: `Our team at ${BRAND.dealerShortName} reaches out for FaceTime or in-person confirmation.`,
   },
 ];
 

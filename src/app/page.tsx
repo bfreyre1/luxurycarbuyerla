@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import JimFalkAffiliation from "./components/JimFalkAffiliation";
+import { BRAND } from "./lib/brand";
 
 const EXOTICS = [
   "Lamborghini",
@@ -26,7 +28,7 @@ const TRUST = [
   "Your preliminary offer path starts in ~60 seconds — final number after private validation",
   "Private validation — FaceTime or in-person only",
   "Immediate payment upon acceptance",
-  "Discreet acquisition backed by Jin Falk Lexus of Beverly Hills standards",
+  BRAND.trustLine,
 ];
 
 const STEPS = [
@@ -147,7 +149,11 @@ export default function Home() {
 
       {/* Trust + image */}
       <section className="border-t border-white/5 bg-surface py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12">
+            <JimFalkAffiliation />
+          </div>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
               src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
@@ -174,6 +180,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
+        </div>
         </div>
       </section>
 

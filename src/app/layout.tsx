@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { BRAND } from "./lib/brand";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -14,9 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Luxury Car Buyer LA - Beverly Hills Standard Cash Offers",
-  description:
-    "Sell luxury or exotic in LA. Lexus to Lamborghini. Preliminary offer in minutes. Private FaceTime or in-person validation. Jin Falk Lexus of Beverly Hills standards.",
+  title: `${BRAND.siteName} - Beverly Hills Standard Cash Offers`,
+  description: BRAND.metaDescription,
 };
 
 export default function RootLayout({

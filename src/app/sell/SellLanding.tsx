@@ -3,6 +3,8 @@
 import AccuTradeWidget from "../components/AccuTradeWidget";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import JimFalkAffiliation from "../components/JimFalkAffiliation";
+import { BRAND } from "../lib/brand";
 
 type Step = {
   step: string;
@@ -32,7 +34,7 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400 md:text-lg">
             From Porsche and Mercedes to Ferrari and Lamborghini — enter your vehicle
-            below for a preliminary cash offer. Jin Falk Lexus of Beverly Hills standards.
+            below for a preliminary cash offer. {BRAND.dealerName} standards.
           </p>
           <ul className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
             {trust.map((item) => (
@@ -47,12 +49,17 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
         </div>
       </section>
 
+      {/* Jim Falk affiliation — PPC trust before conversion */}
+      <section className="mx-auto max-w-3xl px-6 pb-8">
+        <JimFalkAffiliation compact />
+      </section>
+
       {/* Primary conversion — AccuTrade handles vehicle + contact + CRM */}
-      <section className="mx-auto max-w-3xl px-6 py-10 md:py-12">
+      <section className="mx-auto max-w-3xl px-6 pb-10 md:pb-12">
         <AccuTradeWidget />
         <p className="mt-4 text-center text-xs text-zinc-500">
-          Secure form · Preliminary offer only · Our team contacts you to schedule
-          private validation
+          Secure form · Preliminary offer only · Our team at {BRAND.dealerShortName}{" "}
+          contacts you to schedule private validation
         </p>
       </section>
 
@@ -87,9 +94,16 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
             Beverly Hills standards for the extraordinary.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-            Luxury Car Buyer LA is backed by Jin Falk Lexus of Beverly Hills. Your
-            information is handled securely and routed to our acquisition team — no
-            obligation until you accept your final offer.
+            {BRAND.affiliationLine} Your information is handled securely and routed to
+            our acquisition team — no obligation until you accept your final offer.
+          </p>
+          <p className="mt-4">
+            <a
+              href={`tel:${BRAND.phoneTel}`}
+              className="text-lg font-semibold text-gold-light transition hover:text-gold"
+            >
+              {BRAND.phone}
+            </a>
           </p>
         </div>
       </section>

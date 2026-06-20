@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BRAND } from "../lib/brand";
 
 type HeaderProps = {
   landing?: boolean;
@@ -7,17 +8,25 @@ type HeaderProps = {
 export default function Header({ landing = false }: HeaderProps) {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <Link href="/" className="group min-w-0">
           <p className="font-display text-xl font-semibold tracking-wide text-white md:text-2xl">
             Luxury Car Buyer <span className="gold-gradient-text">LA</span>
           </p>
-          <p className="text-[10px] uppercase tracking-[0.25em] text-muted">
-            Beverly Hills standards
+          <p className="truncate text-[10px] uppercase tracking-[0.2em] text-muted sm:tracking-[0.25em]">
+            {landing ? BRAND.dealerShortName : BRAND.tagline}
           </p>
         </Link>
-        {!landing && (
-          <nav className="flex items-center gap-6">
+
+        {landing ? (
+          <a
+            href={`tel:${BRAND.phoneTel}`}
+            className="shrink-0 rounded-full border border-gold/30 px-4 py-2 text-sm font-semibold text-gold-light transition hover:border-gold/60 hover:bg-gold/10"
+          >
+            {BRAND.phone}
+          </a>
+        ) : (
+          <nav className="flex shrink-0 items-center gap-6">
             <Link
               href="/#how-it-works"
               className="hidden text-sm text-zinc-400 transition hover:text-gold-light sm:inline"

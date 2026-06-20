@@ -19,12 +19,20 @@ export default function Header({ landing = false }: HeaderProps) {
         </Link>
 
         {landing ? (
-          <a
-            href={`tel:${BRAND.phoneTel}`}
-            className="shrink-0 rounded-full border border-gold/30 px-4 py-2 text-sm font-semibold text-gold-light transition hover:border-gold/60 hover:bg-gold/10"
-          >
-            {BRAND.phone}
-          </a>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <a
+              href="#offer"
+              className="hidden rounded-full bg-gold px-4 py-2 text-sm font-semibold text-black transition hover:bg-gold-light sm:inline-flex"
+            >
+              Get offer
+            </a>
+            <a
+              href={`tel:${BRAND.phoneTel}`}
+              className="rounded-full border border-gold/30 px-3 py-2 text-xs font-semibold text-gold-light transition hover:border-gold/60 hover:bg-gold/10 sm:px-4 sm:text-sm"
+            >
+              {BRAND.phone}
+            </a>
+          </div>
         ) : (
           <nav className="flex shrink-0 items-center gap-6">
             <Link

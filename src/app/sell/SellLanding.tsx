@@ -5,6 +5,7 @@ import AccuTradeWidget from "../components/AccuTradeWidget";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import JimFalkAffiliation from "../components/JimFalkAffiliation";
+import AcquisitionGrid from "../components/AcquisitionGrid";
 import { BRAND } from "../lib/brand";
 
 type Step = {
@@ -47,6 +48,15 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById("offer")?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="mt-8 inline-flex rounded-full bg-gold px-8 py-3.5 text-base font-semibold text-black transition hover:bg-gold-light"
+          >
+            Get your cash offer →
+          </button>
         </div>
       </section>
 
@@ -55,8 +65,11 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
         <JimFalkAffiliation compact />
       </section>
 
+      {/* Active acquisitions — market price social proof */}
+      <AcquisitionGrid />
+
       {/* Primary conversion — AccuTrade handles vehicle + contact + CRM */}
-      <section className="mx-auto max-w-3xl px-6 pb-10 md:pb-12">
+      <section id="offer" className="mx-auto max-w-3xl scroll-mt-28 px-6 pb-10 md:pb-12">
         <AccuTradeWidget />
         <p className="mt-4 text-center text-xs text-zinc-500">
           Secure form · Preliminary offer only · No obligation ·{" "}

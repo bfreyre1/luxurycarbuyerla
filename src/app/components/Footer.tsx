@@ -28,8 +28,14 @@ export default function Footer() {
           {" · "}
           {BRAND.serviceArea}
         </p>
-        <p className="mt-6 text-xs text-zinc-600">
-          © {new Date().getFullYear()} {BRAND.siteName} · {BRAND.serviceArea}
+        <p className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-zinc-600">
+          <Link href="/privacy" className="transition hover:text-gold-light">
+            Privacy Policy
+          </Link>
+          <span aria-hidden>·</span>
+          <span>
+            © {new Date().getFullYear()} {BRAND.siteName} · {BRAND.serviceArea}
+          </span>
         </p>
       </div>
     </footer>

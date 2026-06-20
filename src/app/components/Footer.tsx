@@ -33,6 +33,10 @@ export default function Footer() {
             Privacy Policy
           </Link>
           <span aria-hidden>·</span>
+          <Link href="/terms" className="transition hover:text-gold-light">
+            Terms of Use
+          </Link>
+          <span aria-hidden>·</span>
           <span>
             © {new Date().getFullYear()} {BRAND.siteName} · {BRAND.serviceArea}
           </span>

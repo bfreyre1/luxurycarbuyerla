@@ -157,7 +157,10 @@ export default function PrivacyPage() {
           </p>
         </div>
 
-        <p className="mt-10 text-center text-sm">
+        <p className="mt-10 flex flex-wrap justify-center gap-4 text-sm">
+          <Link href="/terms" className="text-gold-light hover:text-gold">
+            Terms of Use
+          </Link>
           <Link href="/sell" className="text-gold-light hover:text-gold">
             ← Back to get your offer
           </Link>

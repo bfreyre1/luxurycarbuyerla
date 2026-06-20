@@ -59,13 +59,14 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
       <section className="mx-auto max-w-3xl px-6 pb-10 md:pb-12">
         <AccuTradeWidget />
         <p className="mt-4 text-center text-xs text-zinc-500">
-          Secure form · Preliminary offer only ·{" "}
+          Secure form · Preliminary offer only · No obligation ·{" "}
           <Link href="/privacy" className="underline hover:text-gold-light">
-            Privacy Policy
+            Privacy
           </Link>
           {" · "}
-          Our team at {BRAND.dealerShortName} contacts you to schedule private
-          validation
+          <Link href="/terms" className="underline hover:text-gold-light">
+            Terms
+          </Link>
         </p>
       </section>
 

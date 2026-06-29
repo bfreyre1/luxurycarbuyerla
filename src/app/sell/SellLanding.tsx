@@ -14,12 +14,18 @@ type Step = {
   body: string;
 };
 
+type FaqItem = {
+  q: string;
+  a: string;
+};
+
 type SellLandingProps = {
   trust: string[];
   steps: Step[];
+  faq: FaqItem[];
 };
 
-export default function SellLanding({ trust, steps }: SellLandingProps) {
+export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
   return (
     <div className="min-h-screen bg-background">
       <Header landing />
@@ -81,6 +87,29 @@ export default function SellLanding({ trust, steps }: SellLandingProps) {
             Terms
           </Link>
         </p>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-t border-white/5 bg-surface py-14">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="mb-10 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">FAQ</p>
+            <h2 className="font-display mt-2 text-3xl text-white md:text-4xl">
+              Common questions
+            </h2>
+          </div>
+          <dl className="space-y-6">
+            {faq.map((item) => (
+              <div
+                key={item.q}
+                className="rounded-xl border border-white/5 bg-surface-elevated p-6"
+              >
+                <dt className="font-display text-lg text-white">{item.q}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-zinc-400">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </section>
 
       {/* What happens next — reassurance without duplicate fields */}

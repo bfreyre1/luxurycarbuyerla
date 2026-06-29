@@ -70,10 +70,8 @@ export default function Home() {
             <span className="gold-gradient-text italic">extraordinary.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-            From the Porsche, Mercedes, BMW, Lexus, and Tesla you drive every day to the
-            Ferrari, Lamborghini, Rolls-Royce, McLaren, and Aston Martin that define
-            moments — a preliminary cash offer in minutes, finalized privately. No
-            obligation.
+            Porsche to Lamborghini — preliminary cash offer in minutes. Private validation.
+            No obligation.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
@@ -90,6 +88,18 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Trust strip */}
+      <section className="border-b border-white/5 bg-surface py-8">
+        <ul className="mx-auto flex max-w-7xl flex-col gap-4 px-6 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-10 md:gap-y-3">
+          {TRUST.map((item) => (
+            <li key={item} className="flex gap-3 text-sm text-zinc-300 md:text-base">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden />
+              {item}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Brand strips */}

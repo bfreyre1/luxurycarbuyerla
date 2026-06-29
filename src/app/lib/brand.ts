@@ -20,5 +20,5 @@ export const BRAND = {
     "Discreet acquisition backed by Jim Falk Lexus of Beverly Hills standards",
 
   metaDescription:
-    "Sell luxury or exotic in LA. Lexus to Lamborghini. Preliminary offer in minutes. Private FaceTime or in-person validation. Jim Falk Lexus of Beverly Hills standards.",
+    "Sell luxury or exotic in LA. Lexus to Lamborghini. Preliminary offer in 60 seconds. Private validation. Jim Falk Lexus of Beverly Hills standards.",
 } as const;

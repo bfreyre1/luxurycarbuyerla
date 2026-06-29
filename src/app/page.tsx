@@ -54,8 +54,8 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[90vh] overflow-hidden pt-24">
         <Image
-          src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2400&q=80"
-          alt="Luxury exotic vehicle"
+          src="/images/hero-lcb.jpg"
+          alt="Luxury vehicle acquisition consultation in Beverly Hills"
           fill
           priority
           className="object-cover object-center"

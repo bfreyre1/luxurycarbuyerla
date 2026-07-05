@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const TRUST = [
   "Your preliminary offer path starts in ~60 seconds — final number after private validation",
   "Private validation — FaceTime or in-person only",
-  "Immediate payment upon acceptance",
+  "Immediate certified check upon acceptance",
   BRAND.trustLine,
 ];
 
@@ -29,7 +29,7 @@ const STEPS = [
   {
     step: "03",
     title: "Validate & get paid",
-    body: `Our team at ${BRAND.dealerShortName} reaches out for FaceTime or in-person confirmation.`,
+    body: `Our team at ${BRAND.dealerShortName} confirms by FaceTime or in-person — then certified check upon acceptance.`,
   },
 ];
 
@@ -52,7 +52,7 @@ const FAQ = [
   },
   {
     q: "How do I get paid?",
-    a: "Immediate payment via bank transfer or certified check upon acceptance and validation.",
+    a: "Certified check upon acceptance and validation.",
   },
   {
     q: "Who am I selling to?",

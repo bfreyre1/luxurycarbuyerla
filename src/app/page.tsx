@@ -4,6 +4,7 @@ import AcquisitionGrid from "./components/AcquisitionGrid";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import JimFalkAffiliation from "./components/JimFalkAffiliation";
+import TrustIconStrip from "./components/TrustIconStrip";
 import { BRAND } from "./lib/brand";
 
 const EXOTICS = [
@@ -28,7 +29,7 @@ const DAILY_LUXURY = [
 const TRUST = [
   "Your preliminary offer path starts in ~60 seconds — final number after private validation",
   "Private validation — FaceTime or in-person only",
-  "Immediate payment upon acceptance",
+  "Immediate certified check upon acceptance",
   BRAND.trustLine,
 ];
 
@@ -43,7 +44,7 @@ const STEPS = [
   },
   {
     title: "Validate & get paid",
-    body: "Private FaceTime or in-person inspection, then accept for immediate payment.",
+    body: "Private FaceTime or in-person inspection, then certified check upon acceptance.",
   },
 ];
 
@@ -159,6 +160,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <TrustIconStrip />
         </div>
       </section>
 

@@ -54,13 +54,14 @@ export default function Home() {
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[90vh] overflow-hidden pt-24">
+      <section className="relative min-h-[78vh] overflow-hidden pt-24 sm:min-h-[85vh] lg:min-h-[90vh]">
         <Image
           src="/images/hero-lcb.jpg"
           alt="Luxury vehicle acquisition consultation in Beverly Hills"
           fill
           priority
-          className="object-cover object-center"
+          sizes="100vw"
+          className="hero-bg-image"
         />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto flex min-h-[calc(90vh-6rem)] max-w-7xl flex-col justify-center px-6 py-20">
@@ -176,7 +177,8 @@ export default function Home() {
               src="/images/hero-lcb.jpg"
               alt="Luxury vehicle at Jim Falk Lexus of Beverly Hills"
               fill
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-[78%_center] lg:object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">

@@ -1,0 +1,66 @@
+{
+  "postalCode": "90212",
+  "condition": "excellent",
+  "vehicles": [
+    {
+      "id": "lexus-ls-500",
+      "pricingYear": 2024,
+      "pricingMileage": 15000,
+      "make": "Lexus",
+      "model": "LS",
+      "styleIncludes": ["LS 500"],
+      "styleExcludes": ["500h", "500 F"],
+      "fallbackPrice": 85000
+    },
+    {
+      "id": "porsche-911-carrera-s",
+      "pricingYear": 2023,
+      "pricingMileage": 12000,
+      "make": "Porsche",
+      "model": "911",
+      "styleIncludes": ["Carrera S"],
+      "styleExcludes": ["Cabriolet", "Targa"],
+      "fallbackPrice": 115000
+    },
+    {
+      "id": "mercedes-s-class",
+      "pricingYear": 2024,
+      "pricingMileage": 15000,
+      "make": "Mercedes-Benz",
+      "model": "S-Class",
+      "styleIncludes": ["S 580", "S580", "S 500", "S500"],
+      "styleExcludes": [],
+      "fallbackPrice": 105000
+    },
+    {
+      "id": "bmw-7-series",
+      "pricingYear": 2024,
+      "pricingMileage": 15000,
+      "make": "BMW",
+      "model": "7 Series",
+      "styleIncludes": ["740", "760"],
+      "styleExcludes": ["i7"],
+      "fallbackPrice": 95000
+    },
+    {
+      "id": "tesla-model-s-plaid",
+      "pricingYear": 2024,
+      "pricingMileage": 12000,
+      "make": "Tesla",
+      "model": "Model S",
+      "styleIncludes": ["Plaid"],
+      "styleExcludes": [],
+      "fallbackPrice": 110000
+    },
+    {
+      "id": "audi-rs7",
+      "pricingYear": 2023,
+      "pricingMileage": 12000,
+      "make": "Audi",
+      "model": "RS 7",
+      "styleIncludes": ["RS 7", "RS7"],
+      "styleExcludes": [],
+      "fallbackPrice": 98000
+    }
+  ]
+}

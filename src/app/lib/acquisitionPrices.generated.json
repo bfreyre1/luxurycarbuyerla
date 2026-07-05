@@ -1,0 +1,13 @@
+{
+  "updatedAt": "2026-07-05T00:00:00.000Z",
+  "source": "fallback",
+  "note": "Run: npm run refresh:acquisition-prices -- --write (requires ACCUTRADE_API_KEY)",
+  "prices": {
+    "lexus-ls-500": { "price": 85000, "pricingYear": 2024, "pricingMileage": 15000 },
+    "porsche-911-carrera-s": { "price": 115000, "pricingYear": 2023, "pricingMileage": 12000 },
+    "mercedes-s-class": { "price": 105000, "pricingYear": 2024, "pricingMileage": 15000 },
+    "bmw-7-series": { "price": 95000, "pricingYear": 2024, "pricingMileage": 15000 },
+    "tesla-model-s-plaid": { "price": 110000, "pricingYear": 2024, "pricingMileage": 12000 },
+    "audi-rs7": { "price": 98000, "pricingYear": 2023, "pricingMileage": 12000 }
+  }
+}

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "refresh:acquisition-prices": "node scripts/refresh-acquisition-prices.mjs"
   },
   "dependencies": {
     "next": "16.2.3",

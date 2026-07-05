@@ -19,7 +19,7 @@ const STEPS = [
   {
     step: "01",
     title: "Enter your vehicle",
-    body: "VIN, plate, or year/make/model — exotic or daily luxury.",
+    body: "VIN or year/make/model — exotic or daily luxury.",
   },
   {
     step: "02",

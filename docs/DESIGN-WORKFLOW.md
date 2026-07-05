@@ -110,19 +110,20 @@ Report: build pass/fail, live URLs checked, CRM lead test if requested.
 
 ## Approved `/sell` layout (PPC)
 
-Current target architecture — update `DESIGN.md` on RunPod when this changes:
+Updated 2026-07-05 — legal review build:
 
-1. **Header** — LCB logo, Jim Falk subline, Get offer → `#offer`, phone  
-2. **Hero** — People + car image (pending asset), ad-matched H1, CTA → `#offer`  
-3. **Trust bullets** — ~60 sec, FaceTime validation, Jim Falk, no obligation  
-4. **Jim Falk affiliation** — Lexus logo, dealer link, phone  
-5. **Acquisition grid** — 6 cards, **recent market from $XXX**, “I have one of these →” → `#offer`  
-6. **`#offer`** — AccuTrade widget (vehicle + contact + CRM)  
-7. **What happens next** — 3 steps  
-8. **FAQ** — pending  
-9. **Footer** — Privacy · Terms · phone  
+1. **Header** — LCB + **Powered by Jim Falk Lexus of Beverly Hills**, Get offer → `/sell#offer`  
+2. **Hero** — short PPC copy  
+3. **Jim Falk affiliation** — compact  
+4. **`#offer`** — AccuTrade first (`plateEntry=False`)  
+5. **Acquisition grid** — below form  
+6. **FAQ** → **What happens next** → footer  
 
-**CTA rule:** All “Get offer” buttons scroll to `#offer` — one conversion path.
+## Approved `/` (homepage)
+
+1. Hero (+ powered-by) → 2. Trust → 3. **Acquisition grid** + Get offer → 4. Brand strips → 5. How it works → 6. Jim Falk → 7. CTA  
+
+**CTA rule:** `/sell#offer` on all primary Get offer buttons.
 
 ---
 

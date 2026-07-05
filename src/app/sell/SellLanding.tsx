@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import AccuTradeWidget from "../components/AccuTradeWidget";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -26,12 +27,24 @@ type SellLandingProps = {
 };
 
 export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
+  useEffect(() => {
+    if (window.location.hash === "#offer") {
+      requestAnimationFrame(() => {
+        document.getElementById("offer")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, []);
+
+  const scrollToOffer = () => {
+    document.getElementById("offer")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header landing />
 
-      {/* PPC hero — short, ad-aligned, no scroll required to start */}
-      <section className="border-b border-white/5 bg-surface/50 pt-28 pb-10">
+      {/* PPC hero — short; form is section 2 */}
+      <section className="border-b border-white/5 bg-surface/50 pt-28 pb-8">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <p className="text-xs font-medium uppercase tracking-[0.35em] text-gold">
             Los Angeles · Instant cash offer
@@ -41,8 +54,8 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
             <span className="gold-gradient-text italic">Get paid fast.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400 md:text-lg">
-            From Porsche and Mercedes to Ferrari and Lamborghini — enter your vehicle
-            below for a preliminary cash offer. {BRAND.dealerName} standards.
+            From Porsche and Mercedes to Ferrari and Lamborghini — enter your VIN below for a
+            preliminary cash offer. {BRAND.poweredByLine}.
           </p>
           <ul className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
             {trust.map((item) => (
@@ -56,9 +69,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
           </ul>
           <button
             type="button"
-            onClick={() =>
-              document.getElementById("offer")?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={scrollToOffer}
             className="mt-8 inline-flex rounded-full bg-gold px-8 py-3.5 text-base font-semibold text-black transition hover:bg-gold-light"
           >
             Get your cash offer →
@@ -66,16 +77,19 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
         </div>
       </section>
 
-      {/* Jim Falk affiliation — PPC trust before conversion */}
-      <section className="mx-auto max-w-3xl px-6 pb-8">
+      {/* Jim Falk affiliation — legal trust before form */}
+      <section className="mx-auto max-w-3xl px-6 pb-6">
         <JimFalkAffiliation compact />
       </section>
 
-      {/* Active acquisitions — market price social proof */}
-      <AcquisitionGrid />
-
-      {/* Primary conversion — AccuTrade handles vehicle + contact + CRM */}
+      {/* Primary conversion — AccuTrade first (before acquisition gallery) */}
       <section id="offer" className="mx-auto max-w-3xl scroll-mt-28 px-6 pb-10 md:pb-12">
+        <div className="mb-6 text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-gold">Instant cash offer</p>
+          <h2 className="font-display mt-2 text-2xl text-white md:text-3xl">
+            Enter your VIN to get started
+          </h2>
+        </div>
         <AccuTradeWidget />
         <p className="mt-4 text-center text-xs text-zinc-500">
           Secure form · Preliminary offer only · No obligation ·{" "}
@@ -88,6 +102,9 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
           </Link>
         </p>
       </section>
+
+      {/* Active acquisitions — social proof below form */}
+      <AcquisitionGrid />
 
       {/* FAQ */}
       <section className="border-t border-white/5 bg-surface py-14">
@@ -112,7 +129,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
         </div>
       </section>
 
-      {/* What happens next — reassurance without duplicate fields */}
+      {/* What happens next */}
       <section className="border-t border-white/5 bg-surface py-14">
         <div className="mx-auto max-w-4xl px-6">
           <div className="mb-10 text-center">
@@ -136,7 +153,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
         </div>
       </section>
 
-      {/* Trust close — PPC footer reassurance */}
+      {/* Trust close */}
       <section className="border-t border-white/5 py-12">
         <div className="mx-auto max-w-2xl px-6 text-center">
           <p className="font-display text-2xl text-white">

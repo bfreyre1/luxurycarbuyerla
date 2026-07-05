@@ -6,6 +6,8 @@ type HeaderProps = {
 };
 
 export default function Header({ landing = false }: HeaderProps) {
+  const offerLink = landing ? "#offer" : BRAND.offerHref;
+
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
@@ -13,15 +15,15 @@ export default function Header({ landing = false }: HeaderProps) {
           <p className="font-display text-xl font-semibold tracking-wide text-white md:text-2xl">
             Luxury Car Buyer <span className="gold-gradient-text">LA</span>
           </p>
-          <p className="truncate text-[10px] uppercase tracking-[0.2em] text-muted sm:tracking-[0.25em]">
-            {landing ? BRAND.dealerShortName : BRAND.tagline}
+          <p className="truncate text-[10px] uppercase tracking-[0.15em] text-muted sm:tracking-[0.2em]">
+            {BRAND.poweredByLine}
           </p>
         </Link>
 
         {landing ? (
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
-              href="#offer"
+              href={offerLink}
               className="hidden rounded-full bg-gold px-4 py-2 text-sm font-semibold text-black transition hover:bg-gold-light sm:inline-flex"
             >
               Get offer
@@ -42,7 +44,7 @@ export default function Header({ landing = false }: HeaderProps) {
               How it works
             </Link>
             <Link
-              href="/sell"
+              href={BRAND.offerHref}
               className="rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gold-light"
             >
               Get Your Offer →

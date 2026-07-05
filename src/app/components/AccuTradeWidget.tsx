@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   ACCUTRADE_BASE_URL,
   ACCUTRADE_DEALER_ID,
+  ACCUTRADE_PLATE_ENTRY,
 } from "../lib/accutrade";
 
 function buildIframeSrc(host: string) {
@@ -11,6 +12,7 @@ function buildIframeSrc(host: string) {
     dlr: ACCUTRADE_DEALER_ID,
     lt: "dealer",
     dt: "iframe",
+    plateEntry: ACCUTRADE_PLATE_ENTRY ? "True" : "False",
   });
   if (host) params.set("hd", host);
   return `${ACCUTRADE_BASE_URL}?${params.toString()}`;

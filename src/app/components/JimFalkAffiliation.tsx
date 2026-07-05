@@ -34,8 +34,8 @@ export default function JimFalkAffiliation({ compact = false }: JimFalkAffiliati
           <p className="text-sm leading-relaxed text-zinc-300">
             {compact ? (
               <>
-                Affiliated with{" "}
-                <span className="text-gold-light">{BRAND.dealerName}</span>
+                {BRAND.poweredByLine}. Preliminary offers only — final after private
+                validation.
               </>
             ) : (
               BRAND.affiliationLine

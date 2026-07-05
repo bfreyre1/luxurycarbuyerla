@@ -3,6 +3,10 @@ export const BRAND = {
   siteName: "Luxury Car Buyer LA",
   siteNameShort: "LCB LA",
   tagline: "Beverly Hills standards",
+  /** Header subline — legal-approved Jim Falk affiliation */
+  poweredByLine: "Powered by Jim Falk Lexus of Beverly Hills",
+  /** All primary CTAs — lands on AccuTrade form, not acquisition grid */
+  offerHref: "/sell#offer",
 
   dealerName: "Jim Falk Lexus of Beverly Hills",
   dealerShortName: "Jim Falk Lexus",

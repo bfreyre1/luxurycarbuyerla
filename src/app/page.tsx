@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AcquisitionGrid from "./components/AcquisitionGrid";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import JimFalkAffiliation from "./components/JimFalkAffiliation";
@@ -73,9 +74,10 @@ export default function Home() {
             Porsche to Lamborghini — preliminary cash offer in minutes. Private validation.
             No obligation.
           </p>
+          <p className="mt-3 text-sm text-gold-light/90">{BRAND.poweredByLine}</p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/sell"
+              href={BRAND.offerHref}
               className="inline-flex items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
             >
               Get Your Offer →
@@ -102,7 +104,10 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* Brand strips */}
+      {/* §3 — Active acquisitions (legal + conversion social proof) */}
+      <AcquisitionGrid offerHref={BRAND.offerHref} showSectionCta />
+
+      {/* Brand strips — makes we buy */}
       <section className="border-y border-white/5 bg-surface py-10">
         <div className="mx-auto max-w-7xl px-6">
           <p className="mb-4 text-center text-xs uppercase tracking-[0.3em] text-gold">
@@ -204,7 +209,7 @@ export default function Home() {
             Start with your vehicle details. Your private offer path begins in minutes.
           </p>
           <Link
-            href="/sell"
+            href={BRAND.offerHref}
             className="mt-8 inline-flex rounded-full bg-gold px-10 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
           >
             Get Started →

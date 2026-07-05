@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import { BRAND } from "./lib/brand";
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

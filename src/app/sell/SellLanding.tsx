@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import JimFalkAffiliation from "../components/JimFalkAffiliation";
 import AcquisitionGrid from "../components/AcquisitionGrid";
 import { BRAND } from "../lib/brand";
+import { GA_CONVERSION_EVENTS, trackEvent } from "../lib/analytics";
 
 type Step = {
   step: string;
@@ -32,10 +33,30 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
       requestAnimationFrame(() => {
         document.getElementById("offer")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
+      trackEvent(GA_CONVERSION_EVENTS.viewOfferForm, { page: "/sell", entry: "hash" });
     }
   }, []);
 
+  useEffect(() => {
+    const offer = document.getElementById("offer");
+    if (!offer) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          trackEvent(GA_CONVERSION_EVENTS.viewOfferForm, { page: "/sell", entry: "scroll" });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(offer);
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToOffer = () => {
+    trackEvent(GA_CONVERSION_EVENTS.ctaGetOffer, { page: "/sell", target: "#offer" });
     document.getElementById("offer")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 

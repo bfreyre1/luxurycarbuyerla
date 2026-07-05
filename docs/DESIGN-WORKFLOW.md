@@ -159,10 +159,10 @@ Updated 2026-07-05 — legal review build:
 | Privacy + Terms | Cursor | Done |
 | Hero with people | Brandon asset → Cursor | Pending |
 | FAQ section | Alfred copy → Cursor | Pending |
-| GA4 + conversion tag | Cursor | Pending |
+| GA4 + conversion events | Cursor | Done (set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel) |
 | `luxurycarbuyerla.com` on Vercel | IT + Cursor | Pending |
 | Legal review (Jim Falk) | Brandon / dealer | Pending |
-| Test leads → CRM | Alfred verify | Pending |
+| Test leads → CRM | Alfred verify | Done (Brandon verified 2026-07-05) |
 
 ---
 

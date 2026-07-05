@@ -11,6 +11,7 @@ export const BRAND = {
   dealerName: "Jim Falk Lexus of Beverly Hills",
   dealerShortName: "Jim Falk Lexus",
   dealerUrl: "https://www.jimfalkbeverlyhillslexus.com/",
+  dealerAddress: "9230 Wilshire Blvd, Beverly Hills, CA 90212",
 
   phone: "310-274-5200",
   phoneTel: "+13102745200",

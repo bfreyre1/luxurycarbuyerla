@@ -71,7 +71,7 @@ export default function Home() {
             <span className="gold-gradient-text italic">extraordinary.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-            Porsche to Lamborghini — preliminary cash offer in minutes. Private validation.
+            Lexus to Lamborghini — preliminary cash offer in minutes. Private validation.
             No obligation.
           </p>
           <p className="mt-3 text-sm text-gold-light/90">{BRAND.poweredByLine}</p>
@@ -169,14 +169,35 @@ export default function Home() {
             <JimFalkAffiliation />
           </div>
           <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated">
             <Image
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
-              alt="Luxury Porsche"
+              src="/images/hero-lcb.jpg"
+              alt="Luxury vehicle at Jim Falk Lexus of Beverly Hills"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+              <Image
+                src="/images/lexus-L-emblem.svg"
+                alt=""
+                width={64}
+                height={64}
+                className="mb-4 opacity-95"
+                aria-hidden
+              />
+              <p className="font-display text-2xl font-semibold text-white md:text-3xl">
+                {BRAND.dealerShortName}
+              </p>
+              <p className="mt-1 text-sm text-gold-light">of Beverly Hills</p>
+              <p className="mt-4 text-xs text-zinc-400">{BRAND.dealerAddress}</p>
+              <a
+                href={`tel:${BRAND.phoneTel}`}
+                className="mt-3 text-sm font-semibold text-white hover:text-gold-light"
+              >
+                {BRAND.phone}
+              </a>
+            </div>
           </div>
           <div>
             <h2 className="font-display text-4xl text-white md:text-5xl">

@@ -156,10 +156,11 @@ Updated 2026-07-05 — legal review build:
 | `/sell` + AccuTrade | Cursor | Done |
 | Jim Falk branding | Cursor | Done |
 | Acquisition grid + prices | Cursor + Alfred data | Done (prices editable) |
-| Privacy + Terms | Cursor | Done |
-| Hero with people | Brandon asset → Cursor | Pending |
-| FAQ section | Alfred copy → Cursor | Pending |
+| Privacy + Terms | Cursor | Done (awaiting Jim Falk legal sign-off) |
+| Hero with people | Brandon asset → Cursor | Done (`hero-lcb.jpg`) |
+| FAQ section | Alfred copy → Cursor | Done |
 | GA4 + conversion events | Cursor | Done (set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel) |
+| Vercel Web Analytics + Speed Insights | Cursor | Done (enable in Vercel dashboard) |
 | `luxurycarbuyerla.com` on Vercel | IT + Cursor | Pending |
 | Legal review (Jim Falk) | Brandon / dealer | Pending |
 | Test leads → CRM | Alfred verify | Done (Brandon verified 2026-07-05) |
@@ -220,5 +221,6 @@ Implement LCB /sell updates from Alfred canon:
 |------|--------|
 | 2026-06-20 | Initial DESIGN-WORKFLOW — Alfred/Cursor split documented |
 | 2026-06-20 | Acquisition grid + Jim Falk Phase 0–1 on Vercel |
+| 2026-09-04 | PPC polish — Analytics, OG/sitemap, Alfred FAQ, legal retention/payment |
 
 *Alfred: append rows to VERSIONS.md on RunPod after each verified deploy.*

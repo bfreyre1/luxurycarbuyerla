@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AcquisitionGrid from "./components/AcquisitionGrid";
+import { LexusEmblem } from "./components/DealerLogos";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import JimFalkAffiliation from "./components/JimFalkAffiliation";
@@ -184,14 +185,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-              <Image
-                src="/images/lexus-L-emblem.svg"
-                alt=""
-                width={64}
-                height={64}
-                className="mb-4 opacity-95"
-                aria-hidden
-              />
+              <LexusEmblem size={64} className="mb-4 h-14 w-auto opacity-95" />
               <p className="font-display text-2xl font-semibold text-white md:text-3xl">
                 {BRAND.dealerShortName}
               </p>

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { LexusLockup } from "./DealerLogos";
 import { BRAND } from "../lib/brand";
 
 type JimFalkAffiliationProps = {
@@ -7,27 +7,16 @@ type JimFalkAffiliationProps = {
 };
 
 function DealerLockup({ large = false }: { large?: boolean }) {
-  const emblemSize = large ? 56 : 40;
   return (
-    <div className="flex items-center gap-4">
-      <Image
-        src="/images/lexus-L-emblem.svg"
-        alt=""
-        width={emblemSize}
-        height={emblemSize}
-        className="shrink-0"
-        aria-hidden
-      />
-      <div className={large ? "text-left" : "text-left"}>
+    <div className={`flex flex-col ${large ? "items-start gap-3" : "items-start gap-2"}`}>
+      <LexusLockup className={large ? "h-12 w-auto md:h-14" : "h-8 w-auto sm:h-9"} />
+      <div className="text-left">
         <p
           className={`font-display font-semibold leading-tight text-white ${
             large ? "text-2xl md:text-3xl" : "text-lg"
           }`}
         >
-          {BRAND.dealerShortName}
-        </p>
-        <p className={`text-gold-light ${large ? "text-base" : "text-sm"}`}>
-          of Beverly Hills
+          {BRAND.dealerName}
         </p>
         {large && (
           <p className="mt-2 text-sm text-zinc-400">{BRAND.dealerAddress}</p>
@@ -97,13 +86,6 @@ export default function JimFalkAffiliation({ compact = false }: JimFalkAffiliati
         </div>
 
         <div className="flex shrink-0 flex-col items-center gap-2 md:items-end">
-          <Image
-            src="/images/lexus-logo.svg"
-            alt="Lexus"
-            width={100}
-            height={28}
-            className="h-6 w-auto opacity-90"
-          />
           <a
             href={`tel:${BRAND.phoneTel}`}
             className="text-lg font-semibold text-white transition hover:text-gold-light"

@@ -1,0 +1,10 @@
+Official Lexus marks used on https://www.jimfalkbeverlyhillslexus.com/
+Downloaded 2026-09-04 from the DealerInspire shared brand CDN:
+https://di-shared-assets.dealerinspire.com/public/logos/lexus/
+
+lexus-lockup-light.png  <- lexus-light-large-no-space-desktop-logo.png
+lexus-emblem-light.png  <- left emblem cropped from that same lockup
+
+Jim Falk legal signed off on official logo use for Luxury Car Buyer LA.
+The dealer name is styled text — the live dealer site has no combined
+Jim Falk + Lexus image file.

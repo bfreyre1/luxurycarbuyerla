@@ -5,8 +5,9 @@ import Header from "../components/Header";
 import { BRAND } from "../lib/brand";
 
 export const metadata: Metadata = {
-  title: `Terms of Use | ${BRAND.siteName}`,
+  title: { absolute: `Terms of Use | ${BRAND.siteName}` },
   description: `Terms of use for ${BRAND.siteName}, affiliated with ${BRAND.dealerName}.`,
+  alternates: { canonical: "/terms" },
 };
 
 const SECTIONS = [
@@ -32,6 +33,13 @@ const SECTIONS = [
       "Preliminary offers are based on information you provide and market data available at the time of submission. Actual value may differ after inspection of your vehicle's condition, history, mileage, equipment, modifications, market demand, and other factors.",
       "We reserve the right to revise or withdraw any preliminary offer at any time prior to a signed agreement.",
       "You are under no obligation to accept any offer or proceed with a sale.",
+    ],
+  },
+  {
+    title: "Payment terms",
+    body: [
+      "If you accept a final offer after successful private validation, we pay by certified check. Payment is issued after acceptance of the final offer and completion of any required title, lien, and identity documentation.",
+      "We do not guarantee same-day payment, and a preliminary online number is not a commitment to pay that amount.",
     ],
   },
   {
@@ -131,8 +139,8 @@ export default function TermsPage() {
           Terms of Use
         </h1>
         <p className="mt-4 text-sm text-zinc-500">
-          Last updated: June 2026 · Applies to {BRAND.siteName} (
-          luxurycarbuyerla.com and related pages)
+          Version 1.1 · Last updated: September 2026 · Applies to {BRAND.siteName}{" "}
+          (luxurycarbuyerla.com and related pages)
         </p>
 
         <div className="prose prose-invert mt-10 max-w-none space-y-10">

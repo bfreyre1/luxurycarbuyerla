@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { LexusLockup } from "./DealerLogos";
 import { BRAND } from "../lib/brand";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-surface py-12">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <p className="font-display text-2xl text-white">{BRAND.siteName}</p>
+        <LexusLockup className="mx-auto h-10 w-auto opacity-90" />
+        <p className="font-display mt-5 text-2xl text-white">{BRAND.siteName}</p>
         <p className="mt-2 text-sm text-muted">{BRAND.poweredByLine}</p>
         <p className="mt-2 text-sm text-zinc-500">
           <a

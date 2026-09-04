@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LexusEmblem } from "./DealerLogos";
 import { BRAND } from "../lib/brand";
 
 type HeaderProps = {
@@ -11,13 +12,16 @@ export default function Header({ landing = false }: HeaderProps) {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="group min-w-0">
-          <p className="font-display text-xl font-semibold tracking-wide text-white md:text-2xl">
-            Luxury Car Buyer <span className="gold-gradient-text">LA</span>
-          </p>
-          <p className="truncate text-[10px] uppercase tracking-[0.15em] text-muted sm:tracking-[0.2em]">
-            {BRAND.poweredByLine}
-          </p>
+        <Link href="/" className="group flex min-w-0 items-center gap-3">
+          <LexusEmblem size={36} className="h-8 w-auto shrink-0 sm:h-9" priority />
+          <span className="min-w-0">
+            <p className="font-display text-xl font-semibold tracking-wide text-white md:text-2xl">
+              Luxury Car Buyer <span className="gold-gradient-text">LA</span>
+            </p>
+            <p className="truncate text-[10px] uppercase tracking-[0.15em] text-muted sm:tracking-[0.2em]">
+              {BRAND.poweredByLine}
+            </p>
+          </span>
         </Link>
 
         {landing ? (

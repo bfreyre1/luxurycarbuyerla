@@ -5,8 +5,9 @@ import Header from "../components/Header";
 import { BRAND } from "../lib/brand";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${BRAND.siteName}`,
+  title: { absolute: `Privacy Policy | ${BRAND.siteName}` },
   description: `Privacy policy for ${BRAND.siteName}, affiliated with ${BRAND.dealerName}.`,
+  alternates: { canonical: "/privacy" },
 };
 
 const SECTIONS = [
@@ -60,6 +61,20 @@ const SECTIONS = [
     ],
   },
   {
+    title: "How long we keep information",
+    body: [
+      "We retain inquiry and vehicle information for as long as needed to complete your acquisition conversation, typically up to twenty-four (24) months after last contact, unless a longer period is required for legal, accounting, or fraud-prevention purposes.",
+      "You may request deletion of your personal information at any time using the contact details below. We will honor deletion requests except where we must retain records to comply with law, complete a transaction you requested, or resolve a dispute.",
+    ],
+  },
+  {
+    title: "Your rights",
+    body: [
+      "You may request access to the personal information we hold about you, ask us to correct inaccuracies, or request deletion as described above.",
+      "To make a request, call us or write to the address listed in Contact us. We will verify your identity before fulfilling a request and respond within the timeframes required by applicable law.",
+    ],
+  },
+  {
     title: "How we share information",
     body: [
       `${BRAND.dealerName} and its affiliated entities may share information among related dealership operations to fulfill your request.`,
@@ -85,7 +100,8 @@ const SECTIONS = [
   {
     title: "California residents",
     body: [
-      "If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA/CPRA), including the right to know what personal information we collect, request deletion, and opt out of certain sharing. To exercise these rights, contact us using the information below.",
+      "If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA/CPRA), including the right to know what personal information we collect, request correction or deletion, and opt out of certain sharing.",
+      "We do not sell your personal information for money, and we do not share it for cross-context behavioral advertising. To exercise your rights, contact us using the information below. You will not be discriminated against for exercising these rights.",
     ],
   },
   {
@@ -107,8 +123,8 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="mt-4 text-sm text-zinc-500">
-          Last updated: June 2026 · Applies to {BRAND.siteName} (
-          luxurycarbuyerla.com and related pages)
+          Version 1.1 · Last updated: September 2026 · Applies to {BRAND.siteName}{" "}
+          (luxurycarbuyerla.com and related pages)
         </p>
 
         <div className="prose prose-invert mt-10 max-w-none space-y-10">

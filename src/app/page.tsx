@@ -4,6 +4,7 @@ import AcquisitionGrid from "./components/AcquisitionGrid";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import JimFalkAffiliation from "./components/JimFalkAffiliation";
+import JsonLd from "./components/JsonLd";
 import TrustIconStrip from "./components/TrustIconStrip";
 import { BRAND } from "./lib/brand";
 
@@ -51,6 +52,7 @@ const STEPS = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd pathname="/" />
       <Header />
 
       {/* Hero */}

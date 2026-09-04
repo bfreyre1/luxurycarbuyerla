@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import {
   ACCUTRADE_BASE_URL,
   ACCUTRADE_DEALER_ID,
@@ -18,13 +18,21 @@ function buildIframeSrc(host: string) {
   return `${ACCUTRADE_BASE_URL}?${params.toString()}`;
 }
 
-export default function AccuTradeWidget() {
-  const [host, setHost] = useState("");
-  const [height, setHeight] = useState(800);
+function subscribe() {
+  return () => {};
+}
 
-  useEffect(() => {
-    setHost(window.location.hostname);
-  }, []);
+function getHostSnapshot() {
+  return window.location.hostname;
+}
+
+function getServerHostSnapshot() {
+  return "";
+}
+
+export default function AccuTradeWidget() {
+  const host = useSyncExternalStore(subscribe, getHostSnapshot, getServerHostSnapshot);
+  const [height, setHeight] = useState(800);
 
   const iframeSrc = useMemo(
     () => (host ? buildIframeSrc(host) : ""),
@@ -61,7 +69,7 @@ export default function AccuTradeWidget() {
       ) : (
         <iframe
           id="atEmbeddedFrame"
-          title="Get an instant offer for your used car"
+          title="Get a preliminary cash offer for your luxury vehicle"
           src={iframeSrc}
           width="100%"
           height={height}

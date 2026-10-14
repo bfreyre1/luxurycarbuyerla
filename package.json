@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --experimental-strip-types --test src/app/lib/metaPixel.test.ts",
     "refresh:acquisition-prices": "node scripts/refresh-acquisition-prices.mjs"
   },
   "dependencies": {

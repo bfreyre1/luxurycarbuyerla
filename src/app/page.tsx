@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import JimFalkAffiliation from "./components/JimFalkAffiliation";
 import JsonLd from "./components/JsonLd";
+import OfferLink from "./components/OfferLink";
 import TrustIconStrip from "./components/TrustIconStrip";
 import { BRAND } from "./lib/brand";
 
@@ -81,12 +82,13 @@ export default function Home() {
           </p>
           <p className="mt-3 text-sm text-gold-light/90">{BRAND.poweredByLine}</p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
+            <OfferLink
               href={BRAND.offerHref}
+              placement="home_hero"
               className="inline-flex items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
             >
               Get Your Offer →
-            </Link>
+            </OfferLink>
             <Link
               href="#how-it-works"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition hover:border-gold/50 hover:text-gold-light"
@@ -229,12 +231,13 @@ export default function Home() {
           <p className="mt-4 text-lg text-muted">
             Start with your vehicle details. Your private offer path begins in minutes.
           </p>
-          <Link
+          <OfferLink
             href={BRAND.offerHref}
+            placement="home_footer"
             className="mt-8 inline-flex rounded-full bg-gold px-10 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
           >
             Get Started →
-          </Link>
+          </OfferLink>
         </div>
       </section>
 

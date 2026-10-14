@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BRAND } from "../lib/brand";
+import { trackMetaLead } from "../lib/metaPixel";
 import {
   ACQUISITION_DISCLAIMER,
   ACQUISITION_TARGETS,
@@ -28,21 +29,31 @@ function scrollToOffer() {
 function OfferCta({
   href,
   className,
+  placement,
   children,
 }: {
   href?: string;
   className: string;
+  placement: string;
   children: ReactNode;
 }) {
+  const onClick = () => trackMetaLead(placement);
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link href={href} className={className} onClick={onClick}>
         {children}
       </Link>
     );
   }
   return (
-    <button type="button" onClick={scrollToOffer} className={className}>
+    <button
+      type="button"
+      onClick={() => {
+        onClick();
+        scrollToOffer();
+      }}
+      className={className}
+    >
       {children}
     </button>
   );
@@ -110,6 +121,7 @@ function AcquisitionCard({
         <p className="mt-3 text-sm leading-relaxed text-zinc-400">{vehicle.subtitle}</p>
         <OfferCta
           href={offerHref}
+          placement="acquisition_card"
           className="mt-4 block w-full rounded-full border border-white/15 py-2.5 text-center text-sm font-semibold text-white transition hover:border-gold/40 hover:bg-gold/10 hover:text-gold-light"
         >
           I have one of these →
@@ -153,6 +165,7 @@ export default function AcquisitionGrid({
           <div className="mt-10 text-center">
             <OfferCta
               href={offerHref ?? BRAND.offerHref}
+              placement="acquisition_section"
               className="inline-flex rounded-full bg-gold px-10 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
             >
               Get your cash offer →

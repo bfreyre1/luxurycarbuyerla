@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import MetaPixel from "./components/MetaPixel";
 import { BRAND } from "./lib/brand";
 import { SITE_URL } from "./lib/site";
 import "./globals.css";
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
         <GoogleAnalytics />
+        <MetaPixel />
         {children}
         <Analytics />
         <SpeedInsights />

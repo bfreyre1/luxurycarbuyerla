@@ -1,26 +1,36 @@
 "use client";
 
 import Script from "next/script";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import { META_EVENTS, META_PIXEL_ID, metaPixelIdIsSafe, trackMeta } from "../lib/metaPixel";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import {
+  META_PIXEL_ID,
+  metaPagePath,
+  metaPixelIdIsSafe,
+  metaPixelInitScript,
+  trackMetaPageView,
+} from "../lib/metaPixel";
 
-export default function MetaPixel() {
+function MetaRouteTracker() {
   const pathname = usePathname();
-  const skipFirstPage = useRef(true);
+  const searchParams = useSearchParams();
+  const search = searchParams.toString();
 
   useEffect(() => {
-    if (skipFirstPage.current) {
-      skipFirstPage.current = false;
-      return;
-    }
-    trackMeta(META_EVENTS.pageView);
-  }, [pathname]);
+    trackMetaPageView(metaPagePath(pathname, search, window.location.hash));
+  }, [pathname, search]);
 
+  return null;
+}
+
+export default function MetaPixel() {
   if (!metaPixelIdIsSafe(META_PIXEL_ID)) return null;
 
   return (
     <>
+      <Suspense fallback={null}>
+        <MetaRouteTracker />
+      </Suspense>
       <Script id="meta-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
@@ -31,8 +41,7 @@ export default function MetaPixel() {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '${META_PIXEL_ID}');
-          fbq('track', 'PageView');
+          ${metaPixelInitScript(META_PIXEL_ID)}
         `}
       </Script>
       <noscript>

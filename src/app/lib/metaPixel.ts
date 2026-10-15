@@ -53,6 +53,32 @@ export function trackMeta(event: MetaStandardEvent, params?: Record<string, stri
   sendWhenReady(metaTrackCall(event, params));
 }
 
+/** Current path plus query and hash, so /sell is not reported as the homepage. */
+export function metaPagePath(pathname: string, search = "", hash = "") {
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const query = search ? `?${search.replace(/^\?/, "")}` : "";
+  const fragment = hash ? `#${hash.replace(/^#/, "")}` : "";
+  return `${path}${query}${fragment}`;
+}
+
+/**
+ * Meta's library sends one PageView, then drops later PageView calls.
+ * Next.js navigates with the history method it saved before that library
+ * loads, so the library never sees the move to /sell and keeps the homepage URL.
+ * These two flags let our route tracker send a real PageView for each page.
+ */
+export function metaPixelInitScript(pixelId: string) {
+  return `fbq.disablePushState = true;fbq.allowDuplicatePageViews = true;fbq('init', '${pixelId}');`;
+}
+
+export function trackMetaPageView(pagePath: string) {
+  const params: Record<string, string> = { page_path: pagePath };
+  if (typeof window !== "undefined" && window.location.origin) {
+    params.page_location = `${window.location.origin}${pagePath}`;
+  }
+  trackMeta(META_EVENTS.pageView, params);
+}
+
 /** Offer form (#offer) is on screen. Matches GA4 view_offer_form. */
 export function trackMetaViewContent() {
   trackMeta(META_EVENTS.viewContent, {

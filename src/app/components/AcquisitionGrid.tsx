@@ -150,8 +150,8 @@ export default function AcquisitionGrid({
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-zinc-400">
-            Discreet, competitive preliminary offers for pristine examples — recent market
-            activity below.
+            Luxury we buy every week, and the exotics and big cars too. Figures are recent
+            market activity for the year and mileage shown.
           </p>
         </div>
 

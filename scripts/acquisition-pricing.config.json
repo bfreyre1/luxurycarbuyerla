@@ -33,34 +33,34 @@
       "fallbackPrice": 105000
     },
     {
-      "id": "bmw-7-series",
-      "pricingYear": 2024,
-      "pricingMileage": 15000,
-      "make": "BMW",
-      "model": "7 Series",
-      "styleIncludes": ["740", "760"],
-      "styleExcludes": ["i7"],
-      "fallbackPrice": 95000
-    },
-    {
-      "id": "tesla-model-s-plaid",
-      "pricingYear": 2024,
-      "pricingMileage": 12000,
-      "make": "Tesla",
-      "model": "Model S",
-      "styleIncludes": ["Plaid"],
-      "styleExcludes": [],
-      "fallbackPrice": 110000
-    },
-    {
-      "id": "audi-rs7",
+      "id": "lamborghini-urus",
       "pricingYear": 2023,
       "pricingMileage": 12000,
-      "make": "Audi",
-      "model": "RS 7",
-      "styleIncludes": ["RS 7", "RS7"],
-      "styleExcludes": [],
-      "fallbackPrice": 98000
+      "make": "Lamborghini",
+      "model": "Urus",
+      "styleIncludes": ["Urus S", "S"],
+      "styleExcludes": ["Performante"],
+      "fallbackPrice": 221000
+    },
+    {
+      "id": "ferrari-roma",
+      "pricingYear": 2022,
+      "pricingMileage": 8000,
+      "make": "Ferrari",
+      "model": "Roma",
+      "styleIncludes": ["Roma"],
+      "styleExcludes": ["Spider"],
+      "fallbackPrice": 162000
+    },
+    {
+      "id": "rolls-royce-cullinan",
+      "pricingYear": 2023,
+      "pricingMileage": 12000,
+      "make": "Rolls-Royce",
+      "model": "Cullinan",
+      "styleIncludes": ["Cullinan"],
+      "styleExcludes": ["Black Badge"],
+      "fallbackPrice": 283000
     }
   ]
 }

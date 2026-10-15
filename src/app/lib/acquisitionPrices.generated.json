@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-05T00:00:00.000Z",
-  "source": "fallback",
-  "note": "Run: npm run refresh:acquisition-prices -- --write (requires ACCUTRADE_API_KEY)",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "source": "mixed",
+  "note": "Lexus, Porsche, and Mercedes remain the 2026-07-05 fallback. Urus, Roma, and Cullinan floors are Kelley Blue Book private-party values for good condition (national), checked 2026-10-15. Not an AccuTrade pull. Run npm run refresh:acquisition-prices -- --write when ACCUTRADE_API_KEY is available.",
   "prices": {
     "lexus-ls-500": { "price": 85000, "pricingYear": 2024, "pricingMileage": 15000 },
     "porsche-911-carrera-s": { "price": 115000, "pricingYear": 2023, "pricingMileage": 12000 },
     "mercedes-s-class": { "price": 105000, "pricingYear": 2024, "pricingMileage": 15000 },
-    "bmw-7-series": { "price": 95000, "pricingYear": 2024, "pricingMileage": 15000 },
-    "tesla-model-s-plaid": { "price": 110000, "pricingYear": 2024, "pricingMileage": 12000 },
-    "audi-rs7": { "price": 98000, "pricingYear": 2023, "pricingMileage": 12000 }
+    "lamborghini-urus": { "price": 221000, "pricingYear": 2023, "pricingMileage": 12000 },
+    "ferrari-roma": { "price": 162000, "pricingYear": 2022, "pricingMileage": 8000 },
+    "rolls-royce-cullinan": { "price": 283000, "pricingYear": 2023, "pricingMileage": 12000 }
   }
 }

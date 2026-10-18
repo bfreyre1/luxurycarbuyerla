@@ -71,15 +71,16 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
       <section className="border-b border-white/5 bg-surface/50 pt-28 pb-8">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <p className="text-xs font-medium uppercase tracking-[0.35em] text-gold">
-            Los Angeles · Instant cash offer
+            Los Angeles · Preliminary cash offer
           </p>
           <h1 className="font-display mt-3 text-4xl font-semibold leading-tight text-white md:text-5xl">
             Sell your luxury car.{" "}
             <span className="gold-gradient-text italic">Get paid fast.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400 md:text-lg">
-            From Porsche and Mercedes to Ferrari and Lamborghini — enter your VIN below for a
-            preliminary cash offer. {BRAND.poweredByLine}.
+            From Porsche and Mercedes to Ferrari and Lamborghini — preliminary cash offer in
+            about 60 seconds. The final number comes after a FaceTime or in-person validation.
+            No obligation. {BRAND.poweredByLine}.
           </p>
           <ul className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
             {trust.map((item) => (
@@ -109,7 +110,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
       {/* Primary conversion — AccuTrade first (before acquisition gallery) */}
       <section id="offer" className="mx-auto max-w-3xl scroll-mt-28 px-6 pb-10 md:pb-12">
         <div className="mb-6 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Instant cash offer</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold">Preliminary cash offer</p>
           <h2 className="font-display mt-2 text-2xl text-white md:text-3xl">
             Enter your VIN to get started
           </h2>
@@ -131,7 +132,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
       <AcquisitionGrid />
 
       {/* FAQ */}
-      <section className="border-t border-white/5 bg-surface py-14">
+      <section id="faq" className="scroll-mt-28 border-t border-white/5 bg-surface py-14">
         <div className="mx-auto max-w-3xl px-6">
           <div className="mb-10 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-gold">FAQ</p>
@@ -154,7 +155,7 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
       </section>
 
       {/* What happens next */}
-      <section className="border-t border-white/5 bg-surface py-14">
+      <section id="how-it-works" className="scroll-mt-28 border-t border-white/5 bg-surface py-14">
         <div className="mx-auto max-w-4xl px-6">
           <div className="mb-10 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-gold">What happens next</p>

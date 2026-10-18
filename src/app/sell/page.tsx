@@ -66,7 +66,7 @@ const FAQ = [
   },
   {
     q: "What kinds of cars do you buy?",
-    a: "We buy luxury and exotic vehicles in Los Angeles and Southern California, including Lexus, Porsche, Mercedes-Benz, BMW, Tesla, Audi, Range Rover, Genesis, Cadillac Escalade, and exotics like Lamborghini, Ferrari, Rolls-Royce, McLaren, Aston Martin, Bentley, and Maserati.",
+    a: "We buy luxury and exotic vehicles in Los Angeles and Southern California, including Lexus, Porsche (including the Porsche 911), Mercedes-Benz, BMW, Tesla, Audi, Range Rover, Genesis, Cadillac Escalade, and exotics like Lamborghini, Ferrari, Rolls-Royce, McLaren, Aston Martin, Bentley, and Maserati.",
   },
   {
     q: "Who am I selling to?",

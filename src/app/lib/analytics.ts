@@ -7,7 +7,13 @@ export const GA_CONVERSION_EVENTS = {
   viewOfferForm: "view_offer_form",
   /** Primary CTA toward offer flow */
   ctaGetOffer: "cta_get_offer",
+  /** AccuTrade finished the offer. This is the lead. */
+  leadSubmitted: "lead_submitted",
 } as const;
+
+/** Set this to the Google Ads send_to value (AW-123/label) when the conversion exists. */
+export const GOOGLE_ADS_LEAD_SEND_TO =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_SEND_TO?.trim() ?? "";
 
 declare global {
   interface Window {
@@ -21,4 +27,10 @@ export function trackEvent(
 ) {
   if (!GA_MEASUREMENT_ID || typeof window === "undefined" || !window.gtag) return;
   window.gtag("event", eventName, params);
+}
+
+/** Fires only after NEXT_PUBLIC_GOOGLE_ADS_LEAD_SEND_TO is set. */
+export function trackGoogleAdsLead() {
+  if (!GOOGLE_ADS_LEAD_SEND_TO || typeof window === "undefined" || !window.gtag) return;
+  window.gtag("event", "conversion", { send_to: GOOGLE_ADS_LEAD_SEND_TO });
 }

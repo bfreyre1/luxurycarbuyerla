@@ -9,7 +9,7 @@ import JimFalkAffiliation from "../components/JimFalkAffiliation";
 import AcquisitionGrid from "../components/AcquisitionGrid";
 import { BRAND } from "../lib/brand";
 import { GA_CONVERSION_EVENTS, trackEvent } from "../lib/analytics";
-import { trackMetaLead, trackMetaViewContent } from "../lib/metaPixel";
+import { trackMetaViewContent } from "../lib/metaPixel";
 
 type Step = {
   step: string;
@@ -59,7 +59,6 @@ export default function SellLanding({ trust, steps, faq }: SellLandingProps) {
 
   const scrollToOffer = () => {
     trackEvent(GA_CONVERSION_EVENTS.ctaGetOffer, { page: "/sell", target: "#offer" });
-    trackMetaLead("sell_hero");
     document.getElementById("offer")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 

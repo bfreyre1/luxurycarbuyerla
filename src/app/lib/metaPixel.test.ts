@@ -42,7 +42,7 @@ test("standard events keep Meta's event names", () => {
     ["track", "ViewContent", { content_name: "offer_form", content_category: "sell" }],
   );
   assert.deepEqual(
-    metaTrackCall("Lead", { content_name: "get_offer", content_category: "sell_hero" }),
-    ["track", "Lead", { content_name: "get_offer", content_category: "sell_hero" }],
+    metaTrackCall("Lead", { content_name: "accutrade_offer", content_category: "sell" }),
+    ["track", "Lead", { content_name: "accutrade_offer", content_category: "sell" }],
   );
 });

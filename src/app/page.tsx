@@ -84,7 +84,6 @@ export default function Home() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <OfferLink
               href={BRAND.offerHref}
-              placement="home_hero"
               className="inline-flex items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
             >
               Get Your Offer →
@@ -233,7 +232,6 @@ export default function Home() {
           </p>
           <OfferLink
             href={BRAND.offerHref}
-            placement="home_footer"
             className="mt-8 inline-flex rounded-full bg-gold px-10 py-4 text-base font-semibold text-black transition hover:bg-gold-light"
           >
             Get Started →

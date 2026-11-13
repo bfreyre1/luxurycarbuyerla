@@ -30,5 +30,10 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "src/app/lib/metaPixel.test.ts"]
+  "exclude": [
+    "node_modules",
+    "src/app/lib/metaPixel.test.ts",
+    "src/app/lib/adSource.test.ts",
+    "src/app/lib/accutradeMessage.test.ts"
+  ]
 }

@@ -87,10 +87,10 @@ export function trackMetaViewContent() {
   });
 }
 
-/** A Get offer click. Matches GA4 cta_get_offer. The AccuTrade submit is inside their frame. */
-export function trackMetaLead(placement: string) {
+/** A finished AccuTrade offer. The Get Offer click is not this event. */
+export function trackMetaOfferLead() {
   trackMeta(META_EVENTS.lead, {
-    content_name: "get_offer",
-    content_category: placement,
+    content_name: "accutrade_offer",
+    content_category: "sell",
   });
 }

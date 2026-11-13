@@ -29,7 +29,6 @@ export default function Header({ landing = false }: HeaderProps) {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <OfferLink
               href={offerLink}
-              placement="header_sell"
               className="hidden rounded-full bg-gold px-4 py-2 text-sm font-semibold text-black transition hover:bg-gold-light sm:inline-flex"
             >
               Get offer
@@ -51,7 +50,6 @@ export default function Header({ landing = false }: HeaderProps) {
             </Link>
             <OfferLink
               href={BRAND.offerHref}
-              placement="header_home"
               className="rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gold-light"
             >
               Get Your Offer →

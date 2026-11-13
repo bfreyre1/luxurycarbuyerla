@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import AdSourceCapture from "./components/AdSourceCapture";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import MetaPixel from "./components/MetaPixel";
 import { BRAND } from "./lib/brand";
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
         <GoogleAnalytics />
         <MetaPixel />
+        <AdSourceCapture />
         {children}
         <Analytics />
         <SpeedInsights />
